@@ -1,0 +1,26 @@
+package dynamic_beat_3;
+
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+
+import javazoom.jl.player.Player;
+
+public class Music extends Thread{
+	
+	private Player player;
+	private boolean isLoop; // 음악 반복여부 확인
+	private File file;
+	private FileInputStream fis;
+	private BufferedInputStream bis;
+	
+	
+	Music(String name, boolean isLoop){
+		try {
+			this.isLoop = isLoop;
+			file = new File(Main.class.getResource("../music/" + name).toURI())
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+}
